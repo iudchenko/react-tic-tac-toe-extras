@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-function Board({ xIsNext, squares, onPlay, status, winningSquares }) {
+function Board({ xIsNext, squares, onPlay, winner, winningSquares }) {
   function handleClick(i) {
     const locations = [
       [1, 1],
@@ -13,7 +13,7 @@ function Board({ xIsNext, squares, onPlay, status, winningSquares }) {
       [3, 2],
       [3, 3],
     ];
-    if (squares[i] || status === "X" || status === "O") {
+    if (squares[i] || winner) {
       return;
     }
     const nextSquares = squares.slice();

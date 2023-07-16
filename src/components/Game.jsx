@@ -84,7 +84,7 @@ const Game = () => {
           squares={currentSquares}
           onPlay={handlePlay}
           winningSquares={winner ? winner.line : []}
-          status={status}
+          winner={winner}
         />
       </div>
       <div className="game-info">
