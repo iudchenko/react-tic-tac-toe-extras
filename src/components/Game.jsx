@@ -81,6 +81,7 @@ const Game = () => {
       <div className="game-board">
         <Board
           xIsNext={xIsNext}
+          status={status}
           squares={currentSquares}
           onPlay={handlePlay}
           winningSquares={winner ? winner.line : []}

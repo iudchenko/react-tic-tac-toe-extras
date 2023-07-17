@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-function Board({ xIsNext, squares, onPlay, winner, winningSquares }) {
+function Board({ xIsNext, squares, status, onPlay, winner, winningSquares }) {
   function handleClick(i) {
     const locations = [
       [1, 1],
