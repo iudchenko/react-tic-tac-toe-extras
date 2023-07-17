@@ -3,7 +3,7 @@ import Board from "./Board";
 
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState([[-1, -1]]);
   const [currentMove, setCurrentMove] = useState(0);
   const [sortedAsc, setSortedAsc] = useState(true);
   const xIsNext = currentMove % 2 === 0;
@@ -37,7 +37,7 @@ const Game = () => {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = "Go to move #" + move + " @ " + location[move - 1];
+      description = "Go to move #" + move + " @ " + location[move];
     } else {
       description = "Go to game start";
     }

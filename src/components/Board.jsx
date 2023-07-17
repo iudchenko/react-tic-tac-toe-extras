@@ -2,17 +2,6 @@ import Square from "./Square";
 
 function Board({ xIsNext, squares, status, onPlay, winner, winningSquares }) {
   function handleClick(i) {
-    const locations = [
-      [1, 1],
-      [1, 2],
-      [1, 3],
-      [2, 1],
-      [2, 2],
-      [2, 3],
-      [3, 1],
-      [3, 2],
-      [3, 3],
-    ];
     if (squares[i] || winner) {
       return;
     }
@@ -22,17 +11,11 @@ function Board({ xIsNext, squares, status, onPlay, winner, winningSquares }) {
     } else {
       nextSquares[i] = "O";
     }
-    // console.log(locations[i]);
-    onPlay(nextSquares, locations[i]);
-  }
+    const row = Math.floor(i / 3) + 1;
+    const col = (i % 3) + 1;
 
-  // const winner = calculateWinner(squares);
-  // let status;
-  // if (winner) {
-  //   status = "Winner: " + winner;
-  // } else {
-  //   status = "Next player: " + (xIsNext ? "X" : "O");
-  // }
+    onPlay(nextSquares, [row, col]);
+  }
 
   let boardSquares = [];
 
