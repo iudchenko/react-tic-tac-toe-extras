@@ -13,11 +13,7 @@ const Game = () => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setLocation([...location.slice(0, currentMove + 1), nextLocation]);
-    // setLocation([...location, nextLocation]);
     setCurrentMove(nextHistory.length - 1);
-
-    console.log(history);
-    console.log(location);
   }
 
   function jumpTo(nextMove) {
