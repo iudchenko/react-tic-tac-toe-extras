@@ -3,17 +3,21 @@ import Board from "./Board";
 
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [location, setLocation] = useState([[-1, -1]]);
+  const [location, setLocation] = useState([[null, null]]);
   const [currentMove, setCurrentMove] = useState(0);
   const [sortedAsc, setSortedAsc] = useState(true);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
-  function handlePlay(nextSquares, newLocation) {
+  function handlePlay(nextSquares, nextLocation) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
-    setLocation([...location, newLocation]);
+    setLocation([...location.slice(0, currentMove + 1), nextLocation]);
+    // setLocation([...location, nextLocation]);
     setCurrentMove(nextHistory.length - 1);
+
+    console.log(history);
+    console.log(location);
   }
 
   function jumpTo(nextMove) {
@@ -41,10 +45,14 @@ const Game = () => {
     } else {
       description = "Go to game start";
     }
+
     return (
       <li key={move}>
         {move === currentMove ? (
-          <span>You are at move {currentMove}</span>
+          <span>
+            You are at{" "}
+            {currentMove === 0 ? `game start` : `move ${currentMove}`}
+          </span>
         ) : (
           <button onClick={() => jumpTo(move)}>{description}</button>
         )}
